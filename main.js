@@ -140,7 +140,4 @@ document.addEventListener('DOMContentLoaded', getTodos);
 toDoButton.addEventListener('click', addToDo);
 toDoList.addEventListener('click', deleteCheck);
 filterSelect.addEventListener('change', filterList);
-/* filterOptions.forEach(option => {
-    console.log(option.value);
-    option.addEventListener('click', filterList);
-}); */
+
