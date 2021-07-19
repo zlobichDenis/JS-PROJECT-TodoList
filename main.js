@@ -2,8 +2,9 @@
     const toDoInput = document.querySelector('.todo-input');
     const toDoButton = document.querySelector('.todo-button');
     const toDoList = document.querySelector('.todo-list');
-    const filterOption = document.querySelector('.filter-todo');
-
+    const filterSelect = document.querySelector('.filter-todo');
+    const filterOptions = document.querySelectorAll('.todo-option');
+    console.log(filterOptions);
 
 // Fucntions
 
@@ -40,6 +41,7 @@ const addToDo = e => {
     }
 };
 
+
 const deleteCheck = e => {
     const target = e.target;
     // Delete Todo
@@ -57,7 +59,7 @@ const deleteCheck = e => {
     }
 };
 
-const filterList = e => {
+const filterList = (e) => {
     const todos = toDoList.childNodes;
     todos.forEach(task => {
         switch (e.target.value){
@@ -84,7 +86,7 @@ const filterList = e => {
 
 const saveLocal = task => {
     let todos;
-    if( localStorage.getItem('todos') === null) {
+    if(localStorage.getItem('todos') === null) {
         todos = [];
     } else {
         todos = JSON.parse(localStorage.getItem('todos'));
@@ -137,4 +139,8 @@ const removeLocalStorage = (task) => {
 document.addEventListener('DOMContentLoaded', getTodos);
 toDoButton.addEventListener('click', addToDo);
 toDoList.addEventListener('click', deleteCheck);
-filterOption.addEventListener('click', filterList);
+filterSelect.addEventListener('change', filterList);
+/* filterOptions.forEach(option => {
+    console.log(option.value);
+    option.addEventListener('click', filterList);
+}); */
