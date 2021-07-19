@@ -94,12 +94,16 @@ const saveLocal = task => {
     localStorage.setItem('todos', JSON.stringify(todos));
 };
 
-const getTodos = () => {
+const checkLocalStorage = () => {
     if( localStorage.getItem('todos') === null) {
         todos = [];
     } else {
         todos = JSON.parse(localStorage.getItem('todos'));
     }
+};
+
+const getTodos = () => {
+    checkLocalStorage();
     todos.forEach(task => {
         const toDoDiv = document.createElement('div');
         toDoDiv.classList.add('todo');
@@ -124,11 +128,7 @@ const getTodos = () => {
 };
 
 const removeLocalStorage = (task) => {
-    if( localStorage.getItem('todos') === null) {
-        todos = [];
-    } else {
-        todos = JSON.parse(localStorage.getItem('todos'));
-    }
+    checkLocalStorage();
     todos.splice(todos.indexOf(task.textContent), 1);
     localStorage.setItem('todos', JSON.stringify(todos));
 };
