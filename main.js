@@ -4,7 +4,6 @@
     const toDoList = document.querySelector('.todo-list');
     const filterSelect = document.querySelector('.filter-todo');
     const filterOptions = document.querySelectorAll('.todo-option');
-    console.log(filterOptions);
 
 // Fucntions
 
@@ -29,7 +28,6 @@ const addToDo = e => {
         completedButton.innerHTML = '<i class="fas fa-check"></i>';
         completedButton.classList.add('complete-btn');
         toDoDiv.appendChild(completedButton);
-    
         const deleteButton = document.createElement('button');
         deleteButton.innerHTML = '<i class="fas fa-trash"></i>'
         deleteButton.classList.add('delete-btn');
@@ -43,19 +41,29 @@ const addToDo = e => {
 
 
 const deleteCheck = e => {
-    const target = e.target;
+    console.log(e.target.parentElement.classList.contains(''))
     // Delete Todo
-    if(target.classList.contains('delete-btn')) {
-        target.parentElement.classList.add('fall');
-        removeLocalStorage(target.parentElement);
-        target.parentElement.addEventListener('transitionend', () => { /* 2 */
-            target.parentElement.remove();
+    if(e.target.classList.contains('delete-btn')) {
+        e.target.parentElement.classList.add('fall');
+        removeLocalStorage(e.target.parentElement);
+        e.target.parentElement.addEventListener('transitionend', () => { /* 2 */
+            e.target.parentElement.remove();
         });
-    }
+    } else if(e.target.parentElement.classList.contains('delete-btn')) {
+        const deleteButton = e.target.parentElement;
+        deleteButton.parentElement.classList.add('fall');
+        removeLocalStorage(deleteButton.parentElement);
+        deleteButton.parentElement.addEventListener('transitionend', () => { /* 2 */
+            deleteButton.parentElement.remove();
+        });
+    };
 
     // CHECK ToDo
-    if(target.classList.contains('complete-btn')) {
-        target.parentElement.classList.toggle('completed');
+    if(e.target.classList.contains('complete-btn')) {
+        e.target.parentElement.classList.toggle('completed');
+    } else if (e.target.parentElement.classList.contains('complete-btn')) {
+        const completedButton = e.target.parentElement;
+        completedButton.parentElement.classList.toggle('completed');
     }
 };
 
