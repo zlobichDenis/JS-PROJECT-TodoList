@@ -130,3 +130,8 @@ select {
     background-color: white;
     color: #ff6f47;
 }
+
+.fa-trash, 
+.fa-check {
+    pointer-events: none;
+}

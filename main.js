@@ -49,21 +49,11 @@ const deleteCheck = e => {
         e.target.parentElement.addEventListener('transitionend', () => { /* 2 */
             e.target.parentElement.remove();
         });
-    } else if(e.target.parentElement.classList.contains('delete-btn')) {
-        const deleteButton = e.target.parentElement;
-        deleteButton.parentElement.classList.add('fall');
-        removeLocalStorage(deleteButton.parentElement);
-        deleteButton.parentElement.addEventListener('transitionend', () => { /* 2 */
-            deleteButton.parentElement.remove();
-        });
-    };
+    }
 
     // CHECK ToDo
     if(e.target.classList.contains('complete-btn')) {
         e.target.parentElement.classList.toggle('completed');
-    } else if (e.target.parentElement.classList.contains('complete-btn')) {
-        const completedButton = e.target.parentElement;
-        completedButton.parentElement.classList.toggle('completed');
     }
 };
 
